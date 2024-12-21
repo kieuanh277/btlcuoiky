@@ -1,6 +1,6 @@
-@extends('layouts.master')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_2.jpg');">
       <div class="overlay"></div>
@@ -61,4 +61,5 @@
       </div>
     </section>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\btlcuoiky\resources\views/contact.blade.php ENDPATH**/ ?>
