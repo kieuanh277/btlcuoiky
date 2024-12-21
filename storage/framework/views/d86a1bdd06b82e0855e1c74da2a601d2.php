@@ -1,6 +1,6 @@
-@extends('admin.layoutadmin.layoutadmin')
 
-@section('header')
+
+<?php $__env->startSection('header'); ?>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Quản trị viên</a></li>
@@ -8,15 +8,15 @@
         </ol>
         <h6 class="font-weight-bolder text-white mb-0">Địa danh</h6>
     </nav>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
 
-@section('search')
+<?php $__env->startSection('search'); ?>
     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-        <form action="{{route('sites.search')}}" method="post">
-            @csrf
+        <form action="<?php echo e(route('sites.search')); ?>" method="post">
+            <?php echo csrf_field(); ?>
             <div class="input-group">
                 <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                 <input type="text" class="form-control" name="query" placeholder="Tìm theo tên">
@@ -24,14 +24,14 @@
 
         </form>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
 
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
     <!-- End Navbar -->
@@ -41,7 +41,7 @@
           <div class="card mb-4">
               <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                   <h6 class="mb-0">Danh sách địa danh</h6>
-                  <a href="{{ route('sites.create') }}" class="btn btn-primary btn-sm">
+                  <a href="<?php echo e(route('sites.create')); ?>" class="btn btn-primary btn-sm">
                       Thêm địa danh
                   </a>
               </div>
@@ -59,32 +59,32 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($sites as $site)
+                    <?php $__currentLoopData = $sites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $site): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       <tr>
                         <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">{{$site->id}}</p>
+                          <p class="text-xs font-weight-bold mb-0"><?php echo e($site->id); ?></p>
                         </td>
                         <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">{{$site->siteName}}</p>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo e($site->siteName); ?></p>
                         </td>
                         <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">{{$site->description}}</span>
+                          <span class="text-secondary text-xs font-weight-bold"><?php echo e($site->description); ?></span>
                         </td>
                         <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">{{$site->location->locationName}}</span>
+                          <span class="text-secondary text-xs font-weight-bold"><?php echo e($site->location->locationName); ?></span>
                         </td>
                         <td class="align-middle text-center">
-                            <a href="{{ Storage::url($site->image) }}" target="_blank">
-                                <img width="100" src="{{ Storage::url($site->image) }}" alt="{{ $site->siteName }}">
+                            <a href="<?php echo e(Storage::url($site->image)); ?>" target="_blank">
+                                <img width="100" src="<?php echo e(Storage::url($site->image)); ?>" alt="<?php echo e($site->siteName); ?>">
                             </a>
                         </td>
                           <td class="align-middle">
-                              <a href="{{ route('sites.edit', [$site]) }}" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit hotel">
+                              <a href="<?php echo e(route('sites.edit', [$site])); ?>" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit hotel">
                                   Sửa
                               </a>
-                              <form onclick="return confirm('Bạn có chắc chắn muốn xóa địa danh này không?');" class="d-inline-block" action="{{ route('sites.destroy', [$site]) }}" method="post">
-                                  @csrf
-                                  @method('delete')
+                              <form onclick="return confirm('Bạn có chắc chắn muốn xóa địa danh này không?');" class="d-inline-block" action="<?php echo e(route('sites.destroy', [$site])); ?>" method="post">
+                                  <?php echo csrf_field(); ?>
+                                  <?php echo method_field('delete'); ?>
                                   <a href="#" class="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete hotel" onclick="event.preventDefault(); this.closest('form').submit();">
                                       Xóa
                                   </a>
@@ -93,46 +93,48 @@
 
 
                       </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </tbody>
                 </table>
               </div>
             </div>
             <div class="card-footer clearfix">
               <ul class="pagination justify-content-center">
-                @if ($sites->onFirstPage())
+                <?php if($sites->onFirstPage()): ?>
                   <li class="page-item disabled">
                     <span class="page-link">&laquo;</span>
                   </li>
-                @else
+                <?php else: ?>
                   <li class="page-item">
-                    <a class="page-link" href="{{ $sites->previousPageUrl() }}" aria-label="Previous">
+                    <a class="page-link" href="<?php echo e($sites->previousPageUrl()); ?>" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                @endif
+                <?php endif; ?>
 
-                @foreach ($sites->getUrlRange(1, $sites->lastPage()) as $page => $url)
-                  <li class="page-item {{ $page == $sites->currentPage() ? 'active' : '' }}">
-                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                <?php $__currentLoopData = $sites->getUrlRange(1, $sites->lastPage()); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page => $url): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <li class="page-item <?php echo e($page == $sites->currentPage() ? 'active' : ''); ?>">
+                    <a class="page-link" href="<?php echo e($url); ?>"><?php echo e($page); ?></a>
                   </li>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                @if ($sites->hasMorePages())
+                <?php if($sites->hasMorePages()): ?>
                   <li class="page-item">
-                    <a class="page-link" href="{{ $sites->nextPageUrl() }}" aria-label="Next">
+                    <a class="page-link" href="<?php echo e($sites->nextPageUrl()); ?>" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
-                @else
+                <?php else: ?>
                   <li class="page-item disabled">
                     <span class="page-link">&raquo;</span>
                   </li>
-                @endif
+                <?php endif; ?>
               </ul>
             </div>
 
           </div>
         </div>
       </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layoutadmin.layoutadmin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\btlcuoiky\resources\views/admin/site/index.blade.php ENDPATH**/ ?>
