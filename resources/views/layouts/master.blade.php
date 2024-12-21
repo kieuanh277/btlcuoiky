@@ -59,6 +59,8 @@
                 @else
                     <li class="nav-item cta">
                         <a href="{{ route('auth.signin') }}" class="nav-link"><span>Đăng Nhập</span></a>
+                    </li><li class="nav-item cta">
+                        <a href="{{ route('auth.signup') }}" class="nav-link"><span>Đăng Ký</span></a>
                     </li>
                 @endif
             </ul>
