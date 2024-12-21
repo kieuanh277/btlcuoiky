@@ -20,4 +20,15 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    // Liên kết Order với Hotel thông qua Tour và Site
+    public function hotel(){
+        return $this->hasOneThrough(
+            Hotel::class, // Model đích
+            Tour::class,  // Model trung gian (Tour)
+            'id', // Khóa ngoại trong bảng Tour (tour_id trong bảng Order)
+            'site_id', // Khóa ngoại trong bảng Hotel (site_id trong bảng Hotel)
+            'tour_id', // Khóa chính trong bảng Order (tour_id trong bảng Order)
+            'id' // Khóa chính trong bảng Hotel (id trong bảng Hotel)
+        );
+    }
 }

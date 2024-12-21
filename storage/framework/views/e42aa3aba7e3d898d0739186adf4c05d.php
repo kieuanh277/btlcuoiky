@@ -5,9 +5,9 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Admin</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Thống Kê</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
         </ol>
-        <h6 class="font-weight-bolder text-white mb-0">Thống Kê</h6>
+        <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
     </nav>
 <?php $__env->stopSection(); ?>
 
@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0">Thống Kê</h4>
+            <h4 class="mb-0">Dashboard</h4>
         </div>
     </div>
     <div class="row">

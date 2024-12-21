@@ -44,6 +44,16 @@ class HotelController extends Controller
              'imageUrl' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
              'site_id' => 'required',
          ],$message);
+
+        // Kiểm tra trùng tên khách sạn với cùng địa danh
+         $existingHotel = Hotel::where('hotelName', $request->hotelName)
+         ->where('site_id', $request->site_id)
+         ->first();
+
+         if ($existingHotel) {
+return redirect()->back()->withErrors(['hotelName' => 'Tên khách sạn đã tồn tại trong địa danh này!'])->withInput();
+}
+
         $image = $request->file('imageUrl')->store(
             'hotels/images', 'public'
         );
@@ -65,6 +75,18 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
+        // Kiểm tra xem khách sạn có đang tồn tại trong bất kỳ Order nào không
+    $tour = $hotel->site->tour()->first(); // Lấy Tour đầu tiên liên kết với Site của khách sạn
+    if ($tour) {
+        // Kiểm tra tất cả các Order trong Tour
+        $orders = $tour->orders()->get(); // Lấy tất cả các đơn hàng trong Tour
+        if ($orders->count() > 0) {
+            // Nếu có đơn hàng, không cho phép sửa
+            Toastr::error('Không thể sửa khách sạn này vì đã có đơn hàng liên quan.');
+            return redirect()->route('hotels.index');
+        }
+    }
+
         $request->validate([
             'hotelName'=> 'required',
             'address'=> 'required',
@@ -72,6 +94,16 @@ class HotelController extends Controller
             'imageUrl' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'site_id' => 'required',
         ]);
+
+        // Kiểm tra trùng tên khách sạn với cùng địa danh (trừ chính nó)
+    $existingHotel = Hotel::where('hotelName', $request->hotelName)
+    ->where('site_id', $request->site_id)
+    ->where('id', '!=', $hotel->id)
+    ->first();
+
+if ($existingHotel) {
+return redirect()->back()->withErrors(['hotelName' => 'Tên khách sạn đã tồn tại trong địa danh này!'])->withInput();
+}
 
         if ($request->hasFile('imageUrl')) {
             File::delete('storage/' . $hotel->imageUrl);
@@ -93,6 +125,19 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
+        // Kiểm tra xem khách sạn có đang tồn tại trong bất kỳ Order nào không
+    $tour = $hotel->site->tour()->first(); // Lấy Tour đầu tiên liên kết với Site của khách sạn
+    if ($tour) {
+        // Kiểm tra tất cả các Order trong Tour
+        $orders = $tour->orders()->get(); // Lấy tất cả các đơn hàng trong Tour
+        if ($orders->count() > 0) {
+            // Nếu có đơn hàng, không cho phép sửa
+            Toastr::error('Không thể sửa khách sạn này vì đã có đơn hàng liên quan.');
+            return redirect()->route('hotels.index');
+        }
+    }
+
+
         File::delete('storage/'. $hotel->imageUrl);
         $hotel->delete();
         Toastr::success('Xóa khách sạn thành công!' );
