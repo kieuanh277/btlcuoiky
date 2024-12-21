@@ -41,7 +41,7 @@ class SiteController extends Controller
             'max' => 'Mô tả không được vượt quá 250 ký tự!',
         ];
         $request->validate([
-            'siteName' => 'required|regex:/^[a-zA-Z0-9]+$/|unique:sites,siteName',
+            'siteName' => 'required|regex:/^[\p{L}\p{N}\s]+$/u|unique:sites,siteName',
             'description' => 'nullable|max:250',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ],$message);
@@ -83,12 +83,11 @@ class SiteController extends Controller
         $message = [
             'required' => 'Không được để trống!',
             'image' => 'Phải là hình ảnh!',
-            'unique' => 'Tên địa danh đã tồn tại!',
             'regex' => 'Tên địa danh không được chứa ký tự đặc biệt!',
             'max' => 'Mô tả không được vượt quá 250 ký tự!',
         ];
         $request->validate([
-            'siteName' => 'required|unique:sites,siteName,' . $site->id . '|regex:/^[a-zA-Z0-9]+$/',
+            'siteName' => 'required|regex:/^[\p{L}\p{N}\s]+$/u',
             'description' => 'nullable|max:250',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ],$message);

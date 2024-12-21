@@ -33,10 +33,10 @@ class LocationController extends Controller
         $message = [
             'required' => 'Không được để trống!',
             'unique' =>'Tên vị trí đã tồn tại!',
-            'regex' => 'Tên vị trí không được chứa ký tự đặc biệt!',
+            'regex' => 'Chỉ được nhập chữ, số và khoảng trắng!',
         ];
         $request->validate([
-            'locationName' => 'required|unique:locations,locationName|regex:/^[a-zA-Z0-9\s]+$/',
+            'locationName' => 'required|unique:locations,locationName|regex:/^[\p{L}\p{N}\s]+$/u',
         ],$message);
         $attributes = $request->all();
         Location::create($attributes);
@@ -70,16 +70,19 @@ class LocationController extends Controller
     {
         $message = [
             'required' => 'Không được để trống!',
-            'unique' => 'Tên vị trí đã tồn tại!',
-            'regex' => 'Tên vị trí không được chứa ký tự đặc biệt!',
+            'regex' => 'Chỉ được nhập chữ, số và khoảng trắng!',
         ];
+        
+        $request->merge(['locationName' => trim($request->locationName)]); // Loại bỏ khoảng trắng đầu/cuối
+
         $request->validate([
-            'locationName' => 'required|unique:locations,locationName,' . $location->id . '|regex:/^[a-zA-Z0-9\s]+$/',
-        ],$message);
+            'locationName' => 'required|regex:/^[\p{L}\p{N}\s]+$/u',
+        ], $message);
 
         $attributes = $request->all();
         $location->update($attributes);
-        Toastr::success('Sửa vị trí thành công!' );
+
+        Toastr::success('Sửa vị trí thành công!');
         return redirect()->route('locations.index')->with([
             'message' => 'Success Updated!',
             'alert-type' => 'info'
