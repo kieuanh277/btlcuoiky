@@ -33,11 +33,16 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        $message = ['required' => 'Không được để trống!',
-            'image' => 'Phải là hình ảnh!'
+        $message = [
+            'required' => 'Không được để trống!',
+            'image' => 'Phải là hình ảnh!',
+            'unique' => 'Tên địa danh đã tồn tại!',
+            'regex' => 'Tên địa danh không được chứa ký tự đặc biệt!',
+            'max' => 'Mô tả không được vượt quá 250 ký tự!',
         ];
         $request->validate([
-            'siteName'=> 'required',
+            'siteName' => 'required|regex:/^[a-zA-Z0-9]+$/|unique:sites,siteName',
+            'description' => 'nullable|max:250',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ],$message);
         $image = $request->file('image')->store(
@@ -75,11 +80,16 @@ class SiteController extends Controller
      */
     public function update(Request $request, Site $site)
     {
-        $message = ['required' => 'Không được để trống!',
-            'image' => 'Phải là hình ảnh!'
+        $message = [
+            'required' => 'Không được để trống!',
+            'image' => 'Phải là hình ảnh!',
+            'unique' => 'Tên địa danh đã tồn tại!',
+            'regex' => 'Tên địa danh không được chứa ký tự đặc biệt!',
+            'max' => 'Mô tả không được vượt quá 250 ký tự!',
         ];
         $request->validate([
-            'siteName'=> 'required',
+            'siteName' => 'required|unique:sites,siteName,' . $site->id . '|regex:/^[a-zA-Z0-9]+$/',
+            'description' => 'nullable|max:250',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ],$message);
 
