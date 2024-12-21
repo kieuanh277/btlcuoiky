@@ -17,5 +17,9 @@ class Tour extends Model
     public function site(){
         return $this->belongsToMany(Site::class,'tour_site','tour_id','site_id');
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);  // Giả sử bảng liên kết là 'orders' và có trường 'tour_id'
+    }
 
 }

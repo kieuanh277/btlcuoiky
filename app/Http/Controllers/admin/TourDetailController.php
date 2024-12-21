@@ -152,6 +152,10 @@ class TourDetailController extends Controller
      */
     public function destroy(TourDetail $tourdetail)
     {
+         // Kiểm tra xem tour có đang được đặt trong bất kỳ đơn đặt nào không
+        if (\App\Models\Order::where('tour_id', $tourdetail->tour_id)->count() > 0) {
+            Toastr::error('Không thể xóa chi tiết tour này vì đã có đơn đặt!');
+            return redirect()->back();}
 
         $tourdetail->delete();
         Toastr::success('Xóa chi tiết tour thành công!' );

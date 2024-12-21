@@ -1,22 +1,22 @@
-@extends('admin.layoutadmin.layoutadmin')
 
 
-@section('header')
+
+<?php $__env->startSection('header'); ?>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Admin</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Thống Kê</li>
         </ol>
-        <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
+        <h6 class="font-weight-bolder text-white mb-0">Thống Kê</h6>
     </nav>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="container-fluid">
     <div class="row">
         <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0">Dashboard</h4>
+            <h4 class="mb-0">Thống Kê</h4>
         </div>
     </div>
     <div class="row">
@@ -126,11 +126,13 @@
         </div>
     </div>
 </div>
-  <script src="{{asset('js/jquery.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/dashboard/radailChart.js')}}"></script>
-    <script src="{{ asset('admin/assets/dashboard/getTotalBookingsRadial.js')}}"></script>
-    <script src="{{ asset('admin/assets/dashboard/getTotalRevenueRadial.js')}}"></script>
-    <script src="{{ asset('admin/assets/dashboard/getTotalUserRadial.js')}}"></script>
-    <script src="{{ asset('admin/assets/dashboard/getCustomerBookingPieChart.js')}}"></script>
-    <script src="{{ asset('admin/assets/dashboard/getCustomerAndBookingLineChart.js')}}"></script>
-@endsection
+  <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('admin/assets/dashboard/radailChart.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/assets/dashboard/getTotalBookingsRadial.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/assets/dashboard/getTotalRevenueRadial.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/assets/dashboard/getTotalUserRadial.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/assets/dashboard/getCustomerBookingPieChart.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/assets/dashboard/getCustomerAndBookingLineChart.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layoutadmin.layoutadmin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp_new\htdocs\btlcuoiky\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

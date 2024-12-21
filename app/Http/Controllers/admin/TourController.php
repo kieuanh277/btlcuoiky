@@ -109,8 +109,15 @@ class TourController extends Controller
      */
     public function destroy(Tour $tour)
     {
+            // Kiểm tra xem tour có đang được đặt trong bất kỳ đơn đặt nào không
+        if ($tour->orders()->count() > 0) {  // Giả sử mối quan hệ 'orders' là đúng
+            Toastr::error('Không thể xóa tour này vì đã có đơn đặt!');
+            return redirect()->back();
+        }
+
+        // Kiểm tra nếu có chi tiết tour liên quan
         if($tour->tourDetail->count() > 0){
-            Toastr::error('Không thể xóa tour này!' );
+            Toastr::error('Không thể xóa tour này vì đang có chi tiết tour liên quan!' );
             return redirect()->back();
         }
         File::delete('storage/'. $tour->image);

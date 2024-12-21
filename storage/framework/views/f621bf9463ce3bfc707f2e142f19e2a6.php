@@ -9,25 +9,25 @@
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('css/open-iconic-bootstrap.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
 
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
-
-
-    <link rel="stylesheet" href="{{asset('css/aos.css')}}">
-
-    <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
-
-    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
-    <link rel="stylesheet" href="{{asset('css/jquery.timepicker.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('css/owl.carousel.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/owl.theme.default.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/magnific-popup.css')); ?>">
 
 
-    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('css/aos.css')); ?>">
+
+    <link rel="stylesheet" href="<?php echo e(asset('css/ionicons.min.css')); ?>">
+
+    <link rel="stylesheet" href="<?php echo e(asset('css/bootstrap-datepicker.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/jquery.timepicker.css')); ?>">
+
+
+    <link rel="stylesheet" href="<?php echo e(asset('css/flaticon.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/icomoon.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 </head>
 <body>
@@ -35,7 +35,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" style="position:fixed;"
      id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Nhóm 12</a>
+        <a class="navbar-brand" href="index.html">Nhóm 8</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -43,33 +43,33 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="{{ route('index') }}" class="nav-link">Trang Chủ</a></li>
+                <li class="nav-item"><a href="<?php echo e(route('index')); ?>" class="nav-link">Trang Chủ</a></li>
                 <li class="nav-item "><a href="about.html" class="nav-link">Thông Tin</a></li>
-                <li class="nav-item"><a href="{{ route('tour') }}" class="nav-link">Tour</a></li>
+                <li class="nav-item"><a href="<?php echo e(route('tour')); ?>" class="nav-link">Tour</a></li>
                 <!-- <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li> -->
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-                @if (Auth::check())
+                <?php if(Auth::check()): ?>
                     <li class="nav-item cta">
-                        <a href="{{ route('account.detail') }}" class="nav-link"><span>Hồ Sơ</span></a>
+                        <a href="<?php echo e(route('account.detail')); ?>" class="nav-link"><span>Hồ Sơ</span></a>
                     </li>
                     <li style="margin-left: 5px;" class="nav-item cta">
-                        <a href="{{ route('auth.signout') }}" class="nav-link"><span>Đăng Xuất</span></a>
+                        <a href="<?php echo e(route('auth.signout')); ?>" class="nav-link"><span>Đăng Xuất</span></a>
                     </li>
-                @else
+                <?php else: ?>
                     <li class="nav-item cta">
-                        <a href="{{ route('auth.signin') }}" class="nav-link"><span>Đăng Nhập</span></a>
+                        <a href="<?php echo e(route('auth.signin')); ?>" class="nav-link"><span>Đăng Nhập</span></a>
                     </li><li class="nav-item cta">
-                        <a href="{{ route('auth.signup') }}" class="nav-link"><span>Đăng Ký</span></a>
+                        <a href="<?php echo e(route('auth.signup')); ?>" class="nav-link"><span>Đăng Ký</span></a>
                     </li>
-                @endif
+                <?php endif; ?>
             </ul>
         </div>
     </div>
 </nav>
 
 
-@yield('content')
+<?php echo $__env->yieldContent('content'); ?>
 
 <footer class="ftco-footer ftco-bg-dark ftco-section">
     <div class="container">
@@ -136,23 +136,25 @@
                             stroke="#F96D00"/>
                 </svg>
             </div>
-            <script src="{{asset('js/jquery.min.js')}}"></script>
-            <script src="{{asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
-            <script src="{{asset('js/popper.min.js')}}"></script>
-            <script src="{{asset('js/bootstrap.min.js')}}"></script>
-            <script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
-            <script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
-            <script src="{{asset('js/jquery.stellar.min.js')}}"></script>
-            <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-            <script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
-            <script src="{{asset('js/aos.js')}}"></script>
-            <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
-            <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
-            <script src="{{asset('js/jquery.timepicker.min.js')}}"></script>
-            <script src="{{asset('js/scrollax.min.js')}}"></script>
-            <script src="{{asset('js/main.js')}}"></script>
+            <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/jquery-migrate-3.0.1.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/popper.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/jquery.easing.1.3.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/jquery.waypoints.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/jquery.stellar.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/owl.carousel.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/jquery.magnific-popup.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/aos.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/jquery.animateNumber.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/bootstrap-datepicker.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/jquery.timepicker.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/scrollax.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('js/main.js')); ?>"></script>
             <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-{!! Toastr::message() !!}
+<?php echo Toastr::message(); ?>
+
 </body>
 </html>
 
+<?php /**PATH C:\xampp_new\htdocs\btlcuoiky\resources\views/layouts/master.blade.php ENDPATH**/ ?>

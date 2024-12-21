@@ -4,23 +4,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{asset('admin/assets/img/favicon.png')}}">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo e(asset('admin/assets/img/apple-icon.png')); ?>">
+  <link rel="icon" type="image/png" href="<?php echo e(asset('admin/assets/img/favicon.png')); ?>">
   <title>
     Argon Dashboard 2 by Creative Tim
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="{{asset('admin/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
-  <link href="{{asset('admin/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+  <link href="<?php echo e(asset('admin/assets/css/nucleo-icons.css')); ?>" rel="stylesheet" />
+  <link href="<?php echo e(asset('admin/assets/css/nucleo-svg.css')); ?>" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="{{asset('admin/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+  <link href="<?php echo e(asset('admin/assets/css/nucleo-svg.css')); ?>" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="{{asset('admin/assets/css/argon-dashboard.css?v=2.0.4')}}" rel="stylesheet" />
+  <link id="pagestyle" href="<?php echo e(asset('admin/assets/css/argon-dashboard.css?v=2.0.4')); ?>" rel="stylesheet" />
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-  <link rel="stylesheet" href="{{asset('admin/assets/dashboard/apexcharts.css')}}" />
+  <link rel="stylesheet" href="<?php echo e(asset('admin/assets/dashboard/apexcharts.css')); ?>" />
 
 </head>
 
@@ -30,7 +30,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
-        <img src="{{asset('admin/assets/img/logo-ct-dark.png')}}" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="<?php echo e(asset('admin/assets/img/logo-ct-dark.png')); ?>" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Nhóm 12</span>
       </a>
     </div>
@@ -38,7 +38,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link " href="{{route('dashboard')}}">
+          <a class="nav-link " href="<?php echo e(route('dashboard')); ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -46,7 +46,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('locations.index')}}">
+          <a class="nav-link " href="<?php echo e(route('locations.index')); ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-map-marker-alt text-primary text-sm opacity-10"></i>
             </div>
@@ -54,7 +54,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('sites.index')}}">
+          <a class="nav-link " href="<?php echo e(route('sites.index')); ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-map-big text-primary text-sm opacity-10"></i>
             </div>
@@ -62,7 +62,7 @@
           </a>
         </li>
           <li class="nav-item">
-              <a class="nav-link" href="{{ route('hotels.index') }}">
+              <a class="nav-link" href="<?php echo e(route('hotels.index')); ?>">
                   <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                       <i class="ni ni-building text-primary text-sm opacity-10"></i>
                   </div>
@@ -71,7 +71,7 @@
           </li>
 
           <li class="nav-item">
-          <a class="nav-link " href="{{route('tours.index')}}">
+          <a class="nav-link " href="<?php echo e(route('tours.index')); ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -79,7 +79,7 @@
           </a>
         </li>
           <li class="nav-item">
-              <a class="nav-link " href="{{route('orders.index')}}">
+              <a class="nav-link " href="<?php echo e(route('orders.index')); ?>">
                   <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                       <i class="fas fa-shopping-cart text-primary text-sm opacity-10"></i>
                   </div>
@@ -87,7 +87,7 @@
               </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link " href="{{route('users.index')}}">
+              <a class="nav-link " href="<?php echo e(route('users.index')); ?>">
                   <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                       <i class="fas fa-user text-primary text-sm opacity-10"></i>
                   </div>
@@ -104,21 +104,21 @@
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
-          @yield('header')
+          <?php echo $__env->yieldContent('header'); ?>
           <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-              @yield('search')
+              <?php echo $__env->yieldContent('search'); ?>
             <ul  class="navbar-nav  ml-auto">
                 <li class="nav-item dropdown">
-                    @if(Auth::check())
+                    <?php if(Auth::check()): ?>
                     <a href="#" class="nav-link text-white font-weight-bold px-0" id="signInDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user me-sm-1"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="signInDropdown">
                         <!-- Dropdown content goes here -->
-                        <a class="dropdown-item" href="{{ route('account.detail') }}">Hồ sơ</a>
-                        <a class="dropdown-item" href="{{route('admin.signoutAdmin')}}">Đăng xuất</a>
+                        <a class="dropdown-item" href="<?php echo e(route('account.detail')); ?>">Hồ sơ</a>
+                        <a class="dropdown-item" href="<?php echo e(route('admin.signoutAdmin')); ?>">Đăng xuất</a>
                     </div>
-                    @endif
+                    <?php endif; ?>
                 </li>
 
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -140,7 +140,7 @@
       </div>
     </nav>
 
-  @yield('content')
+  <?php echo $__env->yieldContent('content'); ?>
 
   </div>
   </main>
@@ -217,10 +217,10 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="{{asset('admin/assets/js/core/popper.min.js')}}"></script>
-  <script src="{{asset('admin/assets/js/core/bootstrap.min.js')}}"></script>
-  <script src="{{asset('admin/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-  <script src="{{asset('admin/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
+  <script src="<?php echo e(asset('admin/assets/js/core/popper.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('admin/assets/js/core/bootstrap.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('admin/assets/js/plugins/perfect-scrollbar.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('admin/assets/js/plugins/smooth-scrollbar.min.js')); ?>"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
   <script>
@@ -235,12 +235,14 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{asset('admin/assets/js/argon-dashboard.min.js?v=2.0.4')}}"></script>
-  <script src="{{asset('js/jquery.min.js')}}"></script>
+  <script src="<?php echo e(asset('admin/assets/js/argon-dashboard.min.js?v=2.0.4')); ?>"></script>
+  <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
   <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  {!! Toastr::message() !!}
-  @yield('scripts')
+  <?php echo Toastr::message(); ?>
+
+  <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
 </html>
+<?php /**PATH C:\xampp_new\htdocs\btlcuoiky\resources\views/admin/layoutadmin/layoutadmin.blade.php ENDPATH**/ ?>
