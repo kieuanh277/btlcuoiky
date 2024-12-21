@@ -30,10 +30,13 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        $message = ['required' => 'Không được để trống!',
+        $message = [
+            'required' => 'Không được để trống!',
+            'unique' =>'Tên vị trí đã tồn tại!',
+            'regex' => 'Tên vị trí không được chứa ký tự đặc biệt!',
         ];
         $request->validate([
-            'locationName' => 'required',
+            'locationName' => 'required|unique:locations,locationName|regex:/^[a-zA-Z0-9\s]+$/',
         ],$message);
         $attributes = $request->all();
         Location::create($attributes);
@@ -65,10 +68,13 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        $message = ['required' => 'Không được để trống!',
+        $message = [
+            'required' => 'Không được để trống!',
+            'unique' => 'Tên vị trí đã tồn tại!',
+            'regex' => 'Tên vị trí không được chứa ký tự đặc biệt!',
         ];
         $request->validate([
-            'locationName' => 'required',
+            'locationName' => 'required|unique:locations,locationName,' . $location->id . '|regex:/^[a-zA-Z0-9\s]+$/',
         ],$message);
 
         $attributes = $request->all();
